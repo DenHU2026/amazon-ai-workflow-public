@@ -1,6 +1,6 @@
 # 亚马逊-东哥的 AI 工作流
 
-> 一个真实跑过3年亚马逊的卖家，把踩过的坑沉淀成一套AI工作流。
+> 一个还在场上的亚马逊卖家，把踩过的坑沉淀成一套AI工作流。
 
 🌐 **网页版展示**：[denhu2026.github.io/amazon-ai-workflow-public](https://denhu2026.github.io/amazon-ai-workflow-public/)
 
@@ -12,35 +12,45 @@
 
 **4个skill串起一条完整闭环：**
 
-| 顺序 | Skill | 用途 |
-|------|-------|------|
-| 01 | `amazon-category-scorer` | 类目五维评分，要不要做这个类目 |
-| 02 | `amazon-market-research` | 类目深度调研，怎么做这个类目 |
-| 03 | `amazon-listing-writer` | Listing撰写，标题5点描述一次出 |
-| 04 | `amazon-image-prompt` | 商品图Prompt，6张图一次出齐 |
+| 顺序 | Skill | 用途 | 状态 |
+|------|-------|------|------|
+| 01 | `amazon-category-scorer` | 类目五维评分，要不要做这个类目 | 🔒 星球专享 |
+| 02 | `amazon-market-research` | 类目深度调研，怎么做这个类目 | 🔒 星球专享 |
+| 03 | `amazon-listing-writer` | Listing撰写，标题5点描述一次出 | 🔒 星球专享 |
+| 04 | `amazon-image-prompt` | 商品图Prompt，6张图一次出齐 | ✅ **免费下载** |
 
 ---
 
-## 怎么获取
+## 免费下载：图片 Prompt Skill
 
-完整的skill文件、使用文档、版本更新，全部通过 **知识星球** 发放。
+**先免费试一个，用了就知道差距。**
 
-加入星球后可以获得：
+直接用ChatGPT写"亚马逊主图prompt"？它根本不知道你要什么。
 
-- 4个skill完整源文件
-- 详细使用说明
-- 版本持续更新
-- 实战问题答疑
+这个skill内置了主图6张图的逻辑、亚马逊的视觉规则、不同卖点的表达方式——下载下来直接用。
 
-二维码见 [展示页](https://denhu2026.github.io/amazon-ai-workflow-public/)。
+📦 [下载 amazon-image-prompt-v3.zip](amazon-image-prompt-v3.zip)
+📖 [查看完整使用教程 USAGE.md](USAGE.md)
+
+---
+
+## 解锁全套
+
+完整4个skill、版本更新、实战答疑，全部在**知识星球**：
+
+- **亚马逊-东哥的AI工作流**（扫码加入，二维码见 [展示页](https://denhu2026.github.io/amazon-ai-workflow-public/)）
 
 ---
 
 ## 关于作者
 
-**东哥** · 深圳 · 3年亚马逊卖家，主攻北美站3C类目。
+**东哥** · 深圳
 
-不是技术出身，就是一个被平台教育过的卖家。AI出现之后，把自己踩过的坑都沉淀成工具，给小白卖家少走3个月弯路。
+在场亚马逊卖家，主攻北美站。
+
+陪跑过 **40+** 学员，公众号"假装很自律"沉淀 **560+** 篇实战心得。
+
+不是培训老师，是还在每天卖货的人。
 
 - 知识星球：**亚马逊-东哥的AI工作流**
 - 公众号：**假装很自律**

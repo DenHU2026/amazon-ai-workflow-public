@@ -4,60 +4,63 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>亚马逊-东哥的AI工作流 | Amazon AI Workflow</title>
-<meta name="description" content="一个真实跑过3年亚马逊的卖家，把所有踩过的坑沉淀成一套AI工作流。选品、调研、Listing、图片，一条龙跑通。">
+<meta name="description" content="一个还在场上的亚马逊卖家，把踩过的坑沉淀成一套AI工作流。选品、调研、Listing、图片，一条龙跑通。">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
   :root {
-    --bg: #0a0a0a;
-    --bg-soft: #111111;
-    --bg-card: #161616;
-    --border: #1f1f1f;
-    --border-bright: #2a2a2a;
-    --text: #f5f5f5;
-    --text-soft: #a8a8a8;
-    --text-dim: #666666;
-    --accent: #ff9900;        /* Amazon orange */
-    --accent-soft: #ffb84d;
-    --accent-dim: rgba(255, 153, 0, 0.1);
-    --tech: #00d4ff;          /* tech cyan, used sparingly */
+    /* 米色暖调系统 */
+    --bg: #faf6f1;             /* 主背景，米色 */
+    --bg-soft: #f5efe6;        /* 次背景，更深一点 */
+    --bg-card: #ffffff;        /* 卡片背景，纯白 */
+    --bg-card-warm: #fdf9f3;   /* 暖色卡片 */
+    --border: #e8dfd2;         /* 边框，米色描边 */
+    --border-bright: #d8ccb8;  /* 突出边框 */
+    --text: #2a241d;           /* 主文字，深棕黑 */
+    --text-soft: #5a4f43;      /* 次文字，棕灰 */
+    --text-dim: #8a7d6e;       /* 弱文字 */
+    --accent: #d97706;         /* 亚马逊橙（暖色版）*/
+    --accent-deep: #b45309;    /* 深一点，hover用 */
+    --accent-soft: #fef3e2;    /* 极浅橙底色 */
+    --ink: #1a1612;            /* 重墨黑，标题用 */
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
 
   body {
     font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
     background: var(--bg);
     color: var(--text);
-    line-height: 1.65;
+    line-height: 1.7;
     font-weight: 400;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
   }
 
-  /* Background grain + gradient atmosphere */
+  /* 暖色背景纹理 */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
     background:
-      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 153, 0, 0.08), transparent 60%),
-      radial-gradient(ellipse 60% 40% at 80% 100%, rgba(0, 212, 255, 0.04), transparent 60%);
+      radial-gradient(ellipse 90% 50% at 50% -10%, rgba(217, 119, 6, 0.08), transparent 60%),
+      radial-gradient(ellipse 70% 40% at 80% 100%, rgba(180, 83, 9, 0.05), transparent 60%);
     pointer-events: none;
     z-index: 0;
   }
 
+  /* 纸质纹理 */
   body::after {
     content: '';
     position: fixed;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.6'/%3E%3C/svg%3E");
-    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.06;
+    mix-blend-mode: multiply;
     pointer-events: none;
     z-index: 1;
   }
@@ -70,7 +73,7 @@
     padding: 0 24px;
   }
 
-  /* Top nav */
+  /* Nav */
   nav {
     position: relative;
     z-index: 10;
@@ -100,7 +103,7 @@
     text-decoration: none;
     transition: color 0.2s;
   }
-  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover { color: var(--accent); }
 
   /* Hero */
   .hero {
@@ -115,8 +118,8 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
     color: var(--accent);
-    background: var(--accent-dim);
-    border: 1px solid rgba(255, 153, 0, 0.2);
+    background: var(--accent-soft);
+    border: 1px solid rgba(217, 119, 6, 0.2);
     padding: 6px 14px;
     border-radius: 100px;
     margin-bottom: 32px;
@@ -136,12 +139,13 @@
     line-height: 1.05;
     letter-spacing: -0.03em;
     margin-bottom: 28px;
+    color: var(--ink);
     animation: fadeUp 0.7s ease-out 0.1s both;
   }
   h1 .accent {
-    font-family: 'Instrument Serif', serif;
-    font-style: italic;
-    font-weight: 400;
+    font-family: 'Noto Serif SC', serif;
+    font-style: normal;
+    font-weight: 600;
     color: var(--accent);
     letter-spacing: -0.02em;
   }
@@ -179,15 +183,18 @@
     border-radius: 8px;
     transition: all 0.2s;
     font-family: 'Noto Sans SC', sans-serif;
+    cursor: pointer;
   }
   .btn-primary {
     background: var(--accent);
-    color: #000;
+    color: #fff;
+    border: 1px solid var(--accent);
   }
   .btn-primary:hover {
-    background: var(--accent-soft);
+    background: var(--accent-deep);
+    border-color: var(--accent-deep);
     transform: translateY(-1px);
-    box-shadow: 0 8px 24px rgba(255, 153, 0, 0.3);
+    box-shadow: 0 8px 24px rgba(217, 119, 6, 0.25);
   }
   .btn-ghost {
     background: transparent;
@@ -196,10 +203,11 @@
   }
   .btn-ghost:hover {
     background: var(--bg-card);
-    border-color: #444;
+    border-color: var(--accent);
+    color: var(--accent);
   }
 
-  /* Stats bar */
+  /* Stats */
   .stats {
     margin-top: 72px;
     padding-top: 32px;
@@ -210,13 +218,14 @@
     animation: fadeUp 0.7s ease-out 0.4s both;
   }
   .stat-num {
-    font-family: 'Instrument Serif', serif;
-    font-size: 40px;
-    font-weight: 400;
-    color: var(--text);
+    font-family: 'Noto Serif SC', serif;
+    font-size: 42px;
+    font-weight: 600;
+    color: var(--ink);
     line-height: 1;
     margin-bottom: 8px;
   }
+  .stat-num .plus { color: var(--text-dim); font-size: 24px; font-weight: 400; }
   .stat-label {
     font-size: 12px;
     color: var(--text-dim);
@@ -224,7 +233,6 @@
     letter-spacing: 0.05em;
   }
 
-  /* Section */
   section { padding: 100px 0; position: relative; }
 
   .section-label {
@@ -239,13 +247,13 @@
     font-size: clamp(32px, 4.5vw, 48px);
     font-weight: 700;
     letter-spacing: -0.02em;
-    line-height: 1.15;
+    line-height: 1.2;
     margin-bottom: 20px;
+    color: var(--ink);
   }
   .section-title .accent {
-    font-family: 'Instrument Serif', serif;
-    font-style: italic;
-    font-weight: 400;
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 600;
     color: var(--accent);
   }
   .section-desc {
@@ -281,20 +289,59 @@
     padding: 28px 24px;
     transition: all 0.3s;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 3px rgba(42, 36, 29, 0.04);
   }
   .skill-card::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(255, 153, 0, 0.06), transparent 50%);
+    background: linear-gradient(135deg, rgba(217, 119, 6, 0.04), transparent 50%);
     opacity: 0;
     transition: opacity 0.3s;
   }
   .skill-card:hover {
-    border-color: rgba(255, 153, 0, 0.3);
+    border-color: rgba(217, 119, 6, 0.3);
     transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(42, 36, 29, 0.08);
   }
   .skill-card:hover::before { opacity: 1; }
+
+  .skill-card.featured {
+    border-color: rgba(217, 119, 6, 0.4);
+    background: linear-gradient(180deg, var(--accent-soft), var(--bg-card));
+    box-shadow: 0 4px 16px rgba(217, 119, 6, 0.1);
+  }
+  .skill-card.featured::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+
+  .skill-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+  .badge-free {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 600;
+  }
+  .badge-locked {
+    background: var(--bg-soft);
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+  }
 
   .skill-num {
     font-family: 'JetBrains Mono', monospace;
@@ -312,20 +359,93 @@
     font-weight: 600;
     margin-bottom: 8px;
     letter-spacing: -0.01em;
+    color: var(--ink);
   }
   .skill-name-en {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     color: var(--text-dim);
     margin-bottom: 16px;
+    word-break: break-all;
   }
   .skill-desc {
     font-size: 13px;
     color: var(--text-soft);
-    line-height: 1.6;
+    line-height: 1.65;
+    flex: 1;
+    margin-bottom: 16px;
+  }
+  .skill-action {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+  .skill-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .skill-link:hover { color: var(--accent-deep); }
+  .skill-locked-text {
+    font-size: 12px;
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
   }
 
-  /* Why section */
+  /* Free callout */
+  .free-callout {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 48px;
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(42, 36, 29, 0.04);
+  }
+  .free-callout::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -10%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(217, 119, 6, 0.08), transparent 60%);
+    pointer-events: none;
+  }
+  .free-callout-content { position: relative; z-index: 1; }
+  .free-callout h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .free-callout h3 .accent {
+    font-family: 'Noto Serif SC', serif;
+    color: var(--accent);
+  }
+  .free-callout p {
+    font-size: 14px;
+    color: var(--text-soft);
+    margin-bottom: 24px;
+    max-width: 540px;
+    line-height: 1.7;
+  }
+  .free-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* Why */
   .why-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -341,9 +461,9 @@
   }
   .why-item:last-child { border-bottom: none; }
   .why-num {
-    font-family: 'Instrument Serif', serif;
-    font-style: italic;
+    font-family: 'Noto Serif SC', serif;
     font-size: 32px;
+    font-weight: 600;
     color: var(--accent);
     line-height: 1;
     flex-shrink: 0;
@@ -354,73 +474,77 @@
     font-weight: 600;
     margin-bottom: 6px;
     letter-spacing: -0.01em;
+    color: var(--ink);
   }
   .why-content p {
     font-size: 14px;
     color: var(--text-soft);
-    line-height: 1.65;
+    line-height: 1.7;
   }
 
-  /* About card */
+  /* About */
   .about-card {
-    background: linear-gradient(180deg, var(--bg-card), var(--bg-soft));
+    background: var(--bg-card-warm);
     border: 1px solid var(--border);
     border-radius: 16px;
-    padding: 40px;
+    padding: 48px;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 16px rgba(42, 36, 29, 0.04);
   }
   .about-card::before {
     content: '';
     position: absolute;
     top: -50%; right: -20%;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(255, 153, 0, 0.08), transparent 60%);
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(217, 119, 6, 0.06), transparent 60%);
     pointer-events: none;
   }
   .about-quote {
-    font-family: 'Instrument Serif', serif;
-    font-style: italic;
-    font-size: 24px;
-    line-height: 1.4;
-    color: var(--text);
-    margin-bottom: 28px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 26px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 32px;
     position: relative;
     z-index: 1;
+    font-weight: 500;
   }
   .about-quote::before {
     content: '"';
     color: var(--accent);
-    font-size: 56px;
+    font-size: 60px;
     line-height: 0;
     position: relative;
     top: 18px;
     margin-right: 4px;
+    font-family: serif;
   }
   .about-meta {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
     position: relative;
     z-index: 1;
   }
   .about-row {
     display: flex;
     gap: 16px;
-    font-size: 13px;
+    font-size: 14px;
   }
   .about-key {
     font-family: 'JetBrains Mono', monospace;
     color: var(--text-dim);
     width: 80px;
     flex-shrink: 0;
+    font-size: 12px;
+    padding-top: 2px;
   }
-  .about-val { color: var(--text-soft); }
+  .about-val { color: var(--text); }
+  .about-val strong { color: var(--accent); font-weight: 700; }
 
-  /* CTA section (joined) */
-  .cta-section {
-    padding: 120px 0;
-  }
+  /* CTA */
+  .cta-section { padding: 120px 0; }
   .cta-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -430,26 +554,27 @@
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 16px;
-    padding: 36px;
+    padding: 40px 36px;
     text-align: center;
     transition: all 0.3s;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 1px 3px rgba(42, 36, 29, 0.04);
   }
   .cta-card::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent, rgba(255, 153, 0, 0.04));
+    background: linear-gradient(180deg, transparent, rgba(217, 119, 6, 0.04));
     opacity: 0;
     transition: opacity 0.3s;
   }
   .cta-card:hover {
-    border-color: rgba(255, 153, 0, 0.3);
+    border-color: rgba(217, 119, 6, 0.3);
     transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(42, 36, 29, 0.08);
   }
   .cta-card:hover::before { opacity: 1; }
-
   .cta-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
@@ -465,6 +590,7 @@
     font-weight: 600;
     margin-bottom: 8px;
     letter-spacing: -0.01em;
+    color: var(--ink);
     position: relative;
     z-index: 1;
   }
@@ -477,14 +603,15 @@
   }
   .qrcode {
     display: block;
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
     margin: 0 auto;
-    border-radius: 8px;
+    border-radius: 12px;
     background: white;
-    padding: 10px;
+    padding: 12px;
     position: relative;
     z-index: 1;
+    border: 1px solid var(--border);
   }
   .qrcode img {
     width: 100%;
@@ -493,7 +620,6 @@
     object-fit: contain;
   }
 
-  /* Footer */
   footer {
     padding: 48px 0 64px;
     border-top: 1px solid var(--border);
@@ -506,6 +632,13 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 16px;
+  }
+  .footer-italics {
+    font-family: 'Noto Serif SC', serif;
+    font-style: italic;
+    color: var(--text-dim);
+    font-size: 12px;
+    margin-top: 4px;
   }
   .footer-links {
     display: flex;
@@ -520,7 +653,6 @@
   }
   .footer-links a:hover { color: var(--accent); }
 
-  /* Animations */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -530,7 +662,6 @@
     50% { opacity: 0.4; }
   }
 
-  /* Reveal on scroll */
   .reveal {
     opacity: 0;
     transform: translateY(24px);
@@ -541,14 +672,13 @@
     transform: translateY(0);
   }
 
-  /* Responsive */
   @media (max-width: 768px) {
     nav { padding: 20px 0; }
     .nav-links { gap: 16px; font-size: 12px; }
     .hero { padding: 40px 0 60px; }
     section { padding: 60px 0; }
     .stats { grid-template-columns: repeat(2, 1fr); gap: 32px 16px; }
-    .stat-num { font-size: 32px; }
+    .stat-num { font-size: 34px; }
     .workflow {
       grid-template-columns: 1fr;
       gap: 12px;
@@ -557,7 +687,12 @@
     .why-grid { grid-template-columns: 1fr; gap: 40px; }
     .cta-grid { grid-template-columns: 1fr; }
     .about-card { padding: 28px; }
-    .about-quote { font-size: 19px; }
+    .about-quote { font-size: 20px; }
+    .free-callout {
+      grid-template-columns: 1fr;
+      padding: 28px;
+      gap: 24px;
+    }
     .footer-row { flex-direction: column; align-items: flex-start; }
   }
 </style>
@@ -567,7 +702,7 @@
 <div class="container">
 
   <nav>
-    <div class="logo">东哥<span>/</span>amazon-ai</div>
+    <div class="logo">东哥<span>/</span>amazon-ai-workflow</div>
     <div class="nav-links">
       <a href="#workflow">工作流</a>
       <a href="#why">为什么</a>
@@ -579,10 +714,10 @@
     <div class="hero-tag">v3 · 持续更新中</div>
     <h1>
       亚马逊上架前的<br>
-      <span class="accent">最后一公里</span>，全部交给AI
+      <span class="accent">最后一公里</span>，全部交给 AI
     </h1>
     <p class="hero-sub">
-      一个真实跑过3年亚马逊的卖家，把踩过的坑沉淀成一套AI工作流。
+      一个还在场上的亚马逊卖家，把踩过的坑沉淀成一套AI工作流。
     </p>
     <p class="hero-sub-2">
       选品 → 调研 → Listing → 图片，4个skill串起一条完整闭环。<br>
@@ -590,30 +725,30 @@
     </p>
 
     <div class="hero-cta">
-      <a href="#join" class="btn btn-primary">
-        加入星球获取 →
+      <a href="#workflow" class="btn btn-primary">
+        免费下载图片Prompt Skill →
       </a>
-      <a href="#workflow" class="btn btn-ghost">
-        了解工作流
+      <a href="#join" class="btn btn-ghost">
+        加入星球获取全套
       </a>
     </div>
 
     <div class="stats">
       <div>
+        <div class="stat-num">40<span class="plus">+</span></div>
+        <div class="stat-label">陪跑学员</div>
+      </div>
+      <div>
+        <div class="stat-num">560<span class="plus">+</span></div>
+        <div class="stat-label">实战心得</div>
+      </div>
+      <div>
         <div class="stat-num">4</div>
         <div class="stat-label">CORE SKILLS</div>
       </div>
       <div>
-        <div class="stat-num">3<span style="font-size:24px;color:var(--text-dim);">年</span></div>
-        <div class="stat-label">REAL EXPERIENCE</div>
-      </div>
-      <div>
         <div class="stat-num">v3</div>
         <div class="stat-label">CURRENT VERSION</div>
-      </div>
-      <div>
-        <div class="stat-num">3C</div>
-        <div class="stat-label">CATEGORY FOCUS</div>
       </div>
     </div>
   </header>
@@ -628,6 +763,7 @@
 
     <div class="workflow">
       <div class="skill-card">
+        <span class="skill-badge badge-locked">星球专享</span>
         <div class="skill-num">01 / 初筛</div>
         <div class="skill-icon">⚖️</div>
         <div class="skill-name">类目五维评分</div>
@@ -635,9 +771,13 @@
         <p class="skill-desc">
           需求密度、评论壁垒、利润结构、差异空间、供应链难度。一个类目能不能做，先打分，再决策。
         </p>
+        <div class="skill-action">
+          <span class="skill-locked-text">🔒 加入星球解锁</span>
+        </div>
       </div>
 
       <div class="skill-card">
+        <span class="skill-badge badge-locked">星球专享</span>
         <div class="skill-num">02 / 调研</div>
         <div class="skill-icon">🔍</div>
         <div class="skill-name">类目深度调研</div>
@@ -645,9 +785,13 @@
         <p class="skill-desc">
           市场规模、竞争格局、价格带、目标人群、中小卖家切入方案。一份完整的调研报告，少走3个月弯路。
         </p>
+        <div class="skill-action">
+          <span class="skill-locked-text">🔒 加入星球解锁</span>
+        </div>
       </div>
 
       <div class="skill-card">
+        <span class="skill-badge badge-locked">星球专享</span>
         <div class="skill-num">03 / 上架</div>
         <div class="skill-icon">✍️</div>
         <div class="skill-name">Listing 撰写</div>
@@ -655,9 +799,13 @@
         <p class="skill-desc">
           按 A10、COSMO、Rufus 三套系统逻辑写，标题5点描述、后台词、移动端短描述，直接能用。
         </p>
+        <div class="skill-action">
+          <span class="skill-locked-text">🔒 加入星球解锁</span>
+        </div>
       </div>
 
-      <div class="skill-card">
+      <div class="skill-card featured">
+        <span class="skill-badge badge-free">免费</span>
         <div class="skill-num">04 / 视觉</div>
         <div class="skill-icon">🎨</div>
         <div class="skill-name">商品图 Prompt</div>
@@ -665,6 +813,29 @@
         <p class="skill-desc">
           主图、生活方式图、痛点图、卖点图、规格图、对比图，6张图的英文Prompt一次出齐，喂给AI生图工具。
         </p>
+        <div class="skill-action">
+          <a href="amazon-image-prompt-v3.zip" download class="skill-link">
+            ↓ 下载试用
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="free-callout">
+      <div class="free-callout-content">
+        <h3>先免费试一个，<span class="accent">用了就知道差距</span></h3>
+        <p>
+          直接用ChatGPT写"亚马逊主图prompt"？它根本不知道你要什么。
+          这个skill内置了主图6张图的逻辑、亚马逊的视觉规则、不同卖点的表达方式——下载下来直接用，对比一下就懂了。
+        </p>
+        <div class="free-actions">
+          <a href="amazon-image-prompt-v3.zip" download class="btn btn-primary">
+            ↓ 下载 Skill (zip)
+          </a>
+          <a href="USAGE.md" class="btn btn-ghost" target="_blank">
+            查看使用教程
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -685,7 +856,7 @@
           <div class="why-num">01</div>
           <div class="why-content">
             <h4>真实卖家做的</h4>
-            <p>3年北美站3C类目，被平台封过号，被库存教训过。每一个skill都是真实业务沉淀，不是纸上谈兵。</p>
+            <p>不是培训老师，是还在每天卖货的人。被平台教育过，也教过别人怎么不被教育。每一个skill都是真实业务沉淀。</p>
           </div>
         </li>
         <li class="why-item">
@@ -717,8 +888,8 @@
   <section class="reveal">
     <div class="about-card">
       <p class="about-quote">
-        我不是技术出身，就是一个被亚马逊毒打过的卖家。<br>
-        AI出现之后，我发现自己踩过的坑，新人完全不必再踩一遍。
+        我不是讲师，就是一个还在场上每天卖货的人。<br>
+        自己踩过的坑，不想新人再踩一遍。
       </p>
       <div class="about-meta">
         <div class="about-row">
@@ -726,12 +897,16 @@
           <div class="about-val">东哥 · 深圳</div>
         </div>
         <div class="about-row">
-          <div class="about-key">背景</div>
-          <div class="about-val">3年亚马逊卖家，主攻北美站，3C/电子类目</div>
+          <div class="about-key">身份</div>
+          <div class="about-val">在场亚马逊卖家，主攻北美站</div>
         </div>
         <div class="about-row">
-          <div class="about-key">公众号</div>
-          <div class="about-val">假装很自律 · 跨境电商 + AI工作流</div>
+          <div class="about-key">陪跑</div>
+          <div class="about-val"><strong>40+</strong> 学员</div>
+        </div>
+        <div class="about-row">
+          <div class="about-key">输出</div>
+          <div class="about-val">公众号"假装很自律" · <strong>560+</strong> 篇实战心得</div>
         </div>
         <div class="about-row">
           <div class="about-key">阶段</div>
@@ -745,7 +920,7 @@
   <section id="join" class="cta-section reveal">
     <div class="section-label" style="text-align:center;">// GET ACCESS</div>
     <h2 class="section-title" style="text-align:center;">
-      加入星球，<span class="accent">同步所有更新</span>
+      加入星球，<span class="accent">解锁全部4个skill</span>
     </h2>
     <p class="section-desc" style="text-align:center;margin:0 auto 48px;">
       星球持续更新skill版本、新增skill、答疑解惑。公众号同步分享背后的思考过程。
@@ -755,7 +930,7 @@
       <div class="cta-card">
         <div class="cta-label">// 知识星球</div>
         <h3 class="cta-title">亚马逊-东哥的AI工作流</h3>
-        <p class="cta-desc">下载skill · 同步更新 · 实战答疑</p>
+        <p class="cta-desc">解锁全套skill · 同步更新 · 实战答疑</p>
         <div class="qrcode">
           <img src="zsxq-qrcode.jpeg" alt="知识星球二维码">
         </div>
@@ -779,12 +954,13 @@
   <div class="container">
     <div class="footer-row">
       <div>
-        © 2026 东哥 · 亚马逊AI工作流<br>
-        <span style="color:var(--text-dim);font-size:12px;">Built with real seller experience, not theory.</span>
+        © 2026 东哥 · 亚马逊AI工作流
+        <div class="footer-italics">Built by a real seller, not a course peddler.</div>
       </div>
       <div class="footer-links">
         <a href="#join">加入星球</a>
         <a href="#join">关注公众号</a>
+        <a href="USAGE.md" target="_blank">使用教程</a>
       </div>
     </div>
   </div>
@@ -792,7 +968,6 @@
 
 
 <script>
-  // Reveal on scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
