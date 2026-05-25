@@ -10,14 +10,15 @@
 
 亚马逊上架前的最后一公里，全部交给AI。
 
-**4个skill串起一条完整闭环：**
+**5个skill串起一条完整闭环：**
 
 | 顺序 | Skill | 用途 | 状态 |
 |------|-------|------|------|
 | 01 | `amazon-category-scorer` | 类目五维评分，要不要做这个类目 | 🔒 星球专享 |
 | 02 | `amazon-market-research` | 类目深度调研，怎么做这个类目 | 🔒 星球专享 |
-| 03 | `amazon-listing-writer` | Listing撰写，标题5点描述一次出 | 🔒 星球专享 |
-| 04 | `amazon-image-prompt` | 商品图Prompt，6张图一次出齐 | ✅ **免费下载** |
+| 03 | `patent-risk-screener` | 专利排查，调研后、Listing前做FTO初筛 | 🔒 星球专享 |
+| 04 | `amazon-listing-writer` | Listing撰写，标题5点描述一次出 | 🔒 星球专享 |
+| 05 | `amazon-image-prompt` | 商品图Prompt，6张图一次出齐 | ✅ **免费下载** |
 
 ---
 
@@ -36,7 +37,7 @@
 
 ## 解锁全套
 
-完整4个skill、版本更新、实战答疑，全部在**知识星球**：
+完整5个skill、版本更新、实战答疑，全部在**知识星球**：
 
 - **亚马逊-东哥的AI工作流**（扫码加入，二维码见 [展示页](https://denhu2026.github.io/amazon-ai-workflow-public/)）
 
@@ -59,4 +60,4 @@
 
 ## 当前版本
 
-**v3** · 持续迭代中
+**v3.5** · 持续迭代中
