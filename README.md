@@ -18,7 +18,7 @@
 | 02 | `amazon-market-research` | 类目深度调研，怎么做这个类目 | 🔒 星球专享 |
 | 03 | `patent-risk-screener` | 专利排查，调研后、Listing前做FTO初筛 | 🔒 星球专享 |
 | 04 | `amazon-listing-writer` | Listing撰写，标题5点描述一次出 | 🔒 星球专享 |
-| 05 | `amazon-image-prompt` | 商品图Prompt，6张图一次出齐 | ✅ **免费下载** |
+| 05 | `amazon-image-prompt` | 商品图Prompt，支持通用6张图 / 五行卖点对应 / 实拍反推 | ✅ **免费下载** |
 
 ---
 
@@ -28,7 +28,7 @@
 
 直接用ChatGPT写"亚马逊主图prompt"？它根本不知道你要什么。
 
-这个skill内置了主图6张图的逻辑、亚马逊的视觉规则、不同卖点的表达方式——下载下来直接用。
+这个skill内置了亚马逊主图规则、副图卖点结构、A+尺寸逻辑和实拍反推流程——下载下来直接用。
 
 📦 [下载 amazon-image-prompt-v3.zip](amazon-image-prompt-v3.zip)
 📖 [查看完整使用教程 USAGE.md](USAGE.md)
