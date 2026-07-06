@@ -8,17 +8,21 @@
 
 ## 这是什么
 
-亚马逊上架前的最后一公里，全部交给AI。
+亚马逊上架前的决策、收口、Listing、图片，全部交给AI。
 
-**5个skill串起一条完整闭环：**
+**v3.64：两条路径，7个skill，最后收口到一份选品报告。**
 
 | 顺序 | Skill | 用途 | 状态 |
 |------|-------|------|------|
-| 01 | `amazon-category-scorer` | 类目五维评分，要不要做这个类目 | 🔒 星球专享 |
+| 01A | `amazon-category-scorer` | 类目五维评分，要不要做这个类目 | 🔒 星球专享 |
+| 01B | `amazon-product-scorer` | 产品/ASIN五维评分，要不要跟这个产品 | 🔒 星球专享 |
 | 02 | `amazon-market-research` | 类目深度调研，怎么做这个类目 | 🔒 星球专享 |
 | 03 | `patent-risk-screener` | 专利排查，调研后、Listing前做FTO初筛 | 🔒 星球专享 |
-| 04 | `amazon-listing-writer` | Listing撰写，标题5点描述一次出 | 🔒 星球专享 |
-| 05 | `amazon-image-prompt` | 商品图Prompt，支持通用6张图 / 五行卖点对应 / 实拍反推 | ✅ **免费下载** |
+| 04 | `amazon-report-assembler` | 选品报告汇总器，把评分、调研、专利集中成最终报告 | 🔒 星球专享 |
+| 05 | `amazon-listing-writer` | Listing撰写，标题5点描述一次出 | 🔒 星球专享 |
+| 06 | `amazon-image-prompt` | 商品图Prompt，支持通用6张图 / 五行卖点对应 / 实拍反推 | ✅ **免费下载** |
+
+> 3.64边界：评分和调研是证据输入，最终只收口到选品报告；Goal Loop只放在报告、Listing、图片三个真正需要反复验收的环节。
 
 ---
 
@@ -30,14 +34,14 @@
 
 这个skill内置了亚马逊主图规则、副图卖点结构、A+尺寸逻辑和实拍反推流程——下载下来直接用。
 
-📦 [下载 amazon-image-prompt-v3.zip](amazon-image-prompt-v3.zip)
+📦 [下载 amazon-image-prompt-v3.61.zip](amazon-image-prompt-v3.61.zip)
 📖 [查看完整使用教程 USAGE.md](USAGE.md)
 
 ---
 
 ## 解锁全套
 
-完整5个skill、版本更新、实战答疑，全部在**知识星球**：
+完整7个skill、版本更新、实战答疑，全部在**知识星球**：
 
 - **亚马逊-东哥的AI工作流**（扫码加入，二维码见 [展示页](https://denhu2026.github.io/amazon-ai-workflow-public/)）
 
@@ -60,4 +64,4 @@
 
 ## 当前版本
 
-**v3.6** · 持续迭代中
+**v3.64** · 持续迭代中

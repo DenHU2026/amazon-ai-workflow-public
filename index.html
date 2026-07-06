@@ -722,16 +722,16 @@ var _hmt = _hmt || [];
   </nav>
 
   <header class="hero">
-    <div class="hero-tag">v3.6 · 持续更新中</div>
+    <div class="hero-tag">v3.64 · 持续更新中</div>
     <h1>
       亚马逊上架前的<br>
-      <span class="accent">最后一公里</span>，全部交给 AI
+      <span class="accent">决策到出图</span>，全部交给 AI
     </h1>
     <p class="hero-sub">
       一个亚马逊一线实战卖家，把踩过的坑沉淀成一套AI工作流。
     </p>
     <p class="hero-sub-2">
-      产品评分 / 类目调研 → 专利排查 → Listing → 图片，5个skill串起一条完整闭环。<br>
+      类目/产品评分 → 类目调研 → 专利排查 → 选品报告汇总 → Listing → 图片，7个skill串起一条完整闭环。<br>
       不是教程，是直接能用的工具。
     </p>
 
@@ -754,11 +754,11 @@ var _hmt = _hmt || [];
         <div class="stat-label">实战心得</div>
       </div>
       <div>
-        <div class="stat-num">5</div>
+        <div class="stat-num">7</div>
         <div class="stat-label">CORE SKILLS</div>
       </div>
       <div>
-        <div class="stat-num">v3.6</div>
+        <div class="stat-num">v3.64</div>
         <div class="stat-label">CURRENT VERSION</div>
       </div>
     </div>
@@ -769,18 +769,32 @@ var _hmt = _hmt || [];
     <div class="section-label">// THE WORKFLOW</div>
     <h2 class="section-title">从想做，到能做。<br><span class="accent">一条龙跑通。</span></h2>
     <p class="section-desc">
-      上架前最容易卡壳的5个环节，每一步都有对应的skill。一套用下来，新品决策从"凭感觉"变成"看数据"，上架前再加一道专利风险刹车。
+      上架前最容易卡壳的几个环节，每一步都有对应的skill。3.64以后，评分和调研先做证据输入，最后统一收口到一份选品报告，再交给Listing和图片。
     </p>
 
     <div class="workflow">
       <div class="skill-card">
         <span class="skill-badge badge-locked">星球专享</span>
-        <div class="skill-num">01 / 初筛</div>
+        <div class="skill-num">01A / 类目初筛</div>
         <div class="skill-icon">⚖️</div>
         <div class="skill-name">类目五维评分</div>
         <div class="skill-name-en">amazon-category-scorer</div>
         <p class="skill-desc">
           需求密度、评论壁垒、利润结构、差异空间、供应链难度。一个类目能不能做，先打分，再决策。
+        </p>
+        <div class="skill-action">
+          <span class="skill-locked-text">🔒 加入星球解锁</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-badge badge-locked">星球专享</span>
+        <div class="skill-num">01B / 产品初筛</div>
+        <div class="skill-icon">🎯</div>
+        <div class="skill-name">产品五维评分</div>
+        <div class="skill-name-en">amazon-product-scorer</div>
+        <p class="skill-desc">
+          锚定一个ASIN或产品方向，跨类目找真实竞品池。不是只看一个链接，而是判断这个产品到底值不值得跟。
         </p>
         <div class="skill-action">
           <span class="skill-locked-text">🔒 加入星球解锁</span>
@@ -817,7 +831,21 @@ var _hmt = _hmt || [];
 
       <div class="skill-card">
         <span class="skill-badge badge-locked">星球专享</span>
-        <div class="skill-num">04 / 上架</div>
+        <div class="skill-num">04 / 收口</div>
+        <div class="skill-icon">📌</div>
+        <div class="skill-name">选品报告汇总器</div>
+        <div class="skill-name-en">amazon-report-assembler</div>
+        <p class="skill-desc">
+          把类目评分、产品评分、类目调研、专利排查集中到一份最终报告。上架前不再到处翻结论，只看一个收口判断。
+        </p>
+        <div class="skill-action">
+          <span class="skill-locked-text">🔒 加入星球解锁</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-badge badge-locked">星球专享</span>
+        <div class="skill-num">05 / 上架</div>
         <div class="skill-icon">✍️</div>
         <div class="skill-name">Listing 撰写</div>
         <div class="skill-name-en">amazon-listing-writer</div>
@@ -831,7 +859,7 @@ var _hmt = _hmt || [];
 
       <div class="skill-card featured">
         <span class="skill-badge badge-free">免费</span>
-        <div class="skill-num">05 / 视觉</div>
+        <div class="skill-num">06 / 视觉</div>
         <div class="skill-icon">🎨</div>
         <div class="skill-name">商品图 Prompt</div>
         <div class="skill-name-en">amazon-image-prompt</div>
@@ -839,7 +867,7 @@ var _hmt = _hmt || [];
           支持通用6张图、按Listing五行卖点一一对应出图，也能参考实拍图反推角度生成同构图Prompt。
         </p>
         <div class="skill-action">
-          <a href="amazon-image-prompt-v3.zip" download class="skill-link">
+          <a href="amazon-image-prompt-v3.61.zip" download class="skill-link">
             ↓ 下载试用
           </a>
         </div>
@@ -854,7 +882,7 @@ var _hmt = _hmt || [];
           这个skill内置了亚马逊主图规则、副图卖点结构、A+尺寸逻辑和实拍反推流程——下载下来直接用，对比一下就懂了。
         </p>
         <div class="free-actions">
-          <a href="amazon-image-prompt-v3.zip" download class="btn btn-primary">
+          <a href="amazon-image-prompt-v3.61.zip" download class="btn btn-primary">
             ↓ 下载 Skill (zip)
           </a>
           <a href="USAGE.md" class="btn btn-ghost" target="_blank">
@@ -888,14 +916,14 @@ var _hmt = _hmt || [];
           <div class="why-num">02</div>
           <div class="why-content">
             <h4>形成闭环，不是孤立工具</h4>
-            <p>5个skill按上架顺序串起来，前一步的输出直接喂给下一步。调研之后先过专利风险，再进入Listing和图片。</p>
+            <p>7个skill按两条路径串起来：类目路径和产品路径都先过证据，再由选品报告汇总器收口，最后进入Listing和图片。</p>
           </div>
         </li>
         <li class="why-item">
           <div class="why-num">03</div>
           <div class="why-content">
             <h4>持续更新版本</h4>
-            <p>当前v3.6，新增专利排查门。平台规则变了、自己跑出新心得了，就迭代一次。星球成员第一时间同步。</p>
+            <p>当前v3.64，新增Goal Loop边界：报告、Listing、图片可以反复验收；评分和调研只做证据，不拿网页搜索硬凑数据。</p>
           </div>
         </li>
         <li class="why-item">
@@ -945,7 +973,7 @@ var _hmt = _hmt || [];
   <section id="join" class="cta-section reveal">
     <div class="section-label" style="text-align:center;">// GET ACCESS</div>
     <h2 class="section-title" style="text-align:center;">
-      加入星球，<span class="accent">解锁全部5个skill</span>
+      加入星球，<span class="accent">解锁全部7个skill</span>
     </h2>
     <p class="section-desc" style="text-align:center;margin:0 auto 48px;">
       星球持续更新skill版本、新增skill、答疑解惑。公众号同步分享背后的思考过程。
