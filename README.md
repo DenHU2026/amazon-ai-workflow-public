@@ -20,22 +20,9 @@
 | 03 | `patent-risk-screener` | 专利排查，调研后、Listing前做FTO初筛 | 🔒 星球专享 |
 | 04 | `amazon-report-assembler` | 选品报告汇总器，把评分、调研、专利集中成最终报告 | 🔒 星球专享 |
 | 05 | `amazon-listing-writer` | Listing撰写，标题5点描述一次出 | 🔒 星球专享 |
-| 06 | `amazon-image-prompt` | 商品图Prompt，支持通用6张图 / 五行卖点对应 / 实拍反推 | ✅ **免费下载** |
+| 06 | `amazon-image-prompt` | 商品图Prompt，支持通用6张图 / 五行卖点对应 / 实拍反推 | 🔒 星球专享 |
 
 > 3.64边界：评分和调研是证据输入，最终只收口到选品报告；Goal Loop只放在报告、Listing、图片三个真正需要反复验收的环节。
-
----
-
-## 免费下载：图片 Prompt Skill
-
-**先免费试一个，用了就知道差距。**
-
-直接用ChatGPT写"亚马逊主图prompt"？它根本不知道你要什么。
-
-这个skill内置了亚马逊主图规则、副图卖点结构、A+尺寸逻辑和实拍反推流程——下载下来直接用。
-
-📦 [下载 amazon-image-prompt-v3.61.zip](amazon-image-prompt-v3.61.zip)
-📖 [查看完整使用教程 USAGE.md](USAGE.md)
 
 ---
 
